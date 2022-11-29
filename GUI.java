@@ -7,7 +7,7 @@ public class GUI {
         int x1, int y1, int z1, int x2, int y2, int z2) {
         return (Math.sqrt(((x2 - x1) ^ 2) + ((y2 - y1) ^ 2) + ((z2 - z1) ^ 2)));
     }
-
+    
     private static void createAndShowGUI() {
         JFrame f = new JFrame();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,6 +69,7 @@ public class GUI {
         Button.setBounds(10, 70, 100, 20);
         Button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                DistanceLabel.setText(result);
             }
         });
         f.add(Button);
