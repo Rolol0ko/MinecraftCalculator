@@ -66,31 +66,11 @@ public class GUI {
                     Coord2z.commitEdit();
                 }catch (ParseException s){}
 
-                System.out.println(Integer.parseInt(Coord2x.getText()) - Integer.parseInt(Coord1x.getText()));
-                System.out.println(Integer.parseInt(Coord2y.getText()) - Integer.parseInt(Coord1y.getText()));
-                System.out.println(Integer.parseInt(Coord2z.getText()) - Integer.parseInt(Coord1z.getText()));
-                System.out.println();
-
-                System.out.println((Integer.parseInt(Coord2x.getText()) - Integer.parseInt(Coord1x.getText()))^2);
-                System.out.println((Integer.parseInt(Coord2y.getText()) - Integer.parseInt(Coord1y.getText()))^2);
-                System.out.println((Integer.parseInt(Coord2z.getText()) - Integer.parseInt(Coord1z.getText()))^2);
-                System.out.println();
-
-                System.out.println(
-                    ((Integer.parseInt(Coord2x.getText()) - Integer.parseInt(Coord1x.getText())) ^ 2) + 
-                    ((Integer.parseInt(Coord2y.getText()) - Integer.parseInt(Coord1y.getText())) ^ 2) + 
-                    ((Integer.parseInt(Coord2z.getText()) - Integer.parseInt(Coord1z.getText())) ^ 2)
-                    );
-
-                Double distance2 = Math.sqrt(
-                    (() ^ 2) + 
-                    ((Integer.parseInt(Coord2y.getText()) - Integer.parseIntInteger.parseInt(Coord2x.getText()) - Integer.parseInt(Coord1x.getText())(Coord1y.getText())) ^ 2) + 
-                    ((Integer.parseInt(Coord2z.getText()) - Integer.parseInt(Coord1z.getText())) ^ 2)
-                    );
-
-                System.out.println(distance2);
-                Double d = distance2;
-                System.out.println(d);
+                Double d = Math.sqrt(
+                    (Math.pow(Integer.parseInt(Coord2x.getText()) - Integer.parseInt(Coord1x.getText()), 2)) + 
+                    (Math.pow(Integer.parseInt(Coord2y.getText()) - Integer.parseInt(Coord1y.getText()), 2)) + 
+                    (Math.pow(Integer.parseInt(Coord2z.getText()) - Integer.parseInt(Coord1z.getText()), 2))
+                    );;
                 String result = d.toString();
                 DistanceLabel.setText(result);
             }
