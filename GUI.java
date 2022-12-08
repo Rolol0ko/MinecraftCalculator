@@ -1,13 +1,9 @@
 import java.awt.event.*;
 import java.lang.Math;
 import javax.swing.*;
+import java.text.ParseException;
 
 public class GUI {
-    public static double distance(
-        int x1, int y1, int z1, int x2, int y2, int z2) {
-        return (Math.sqrt(((x2 - x1) ^ 2) + ((y2 - y1) ^ 2) + ((z2 - z1) ^ 2)));
-    }
-    
     private static void createAndShowGUI() {
         JFrame f = new JFrame();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,25 +46,52 @@ public class GUI {
         Coord2z.setBounds(340, 40, 100, 20);
         f.add(Coord2z);
 
-        // Calculated distance
-        double distance = distance(
-            Integer.parseInt(Coord1x.getText()),
-            Integer.parseInt(Coord1y.getText()),
-            Integer.parseInt(Coord1z.getText()),
-            Integer.parseInt(Coord2x.getText()),
-            Integer.parseInt(Coord2y.getText()),
-            Integer.parseInt(Coord2z.getText()));
-        Double d = distance;
-        String result = d.toString();
-        JLabel DistanceLabel = new JLabel(result);
+        JLabel DistanceLabel = new JLabel("0");
         DistanceLabel.setBounds(120, 70, 100, 20);
         f.add(DistanceLabel);
 
         // Calculate Button
         JButton Button = new JButton("Calculate");
         Button.setBounds(10, 70, 100, 20);
+
         Button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                try{
+                    Coord1x.commitEdit();
+                    Coord1y.commitEdit();
+                    Coord1z.commitEdit();
+
+                    Coord2x.commitEdit();
+                    Coord2y.commitEdit();
+                    Coord2z.commitEdit();
+                }catch (ParseException s){}
+
+                System.out.println(Integer.parseInt(Coord2x.getText()) - Integer.parseInt(Coord1x.getText()));
+                System.out.println(Integer.parseInt(Coord2y.getText()) - Integer.parseInt(Coord1y.getText()));
+                System.out.println(Integer.parseInt(Coord2z.getText()) - Integer.parseInt(Coord1z.getText()));
+                System.out.println();
+
+                System.out.println((Integer.parseInt(Coord2x.getText()) - Integer.parseInt(Coord1x.getText()))^2);
+                System.out.println((Integer.parseInt(Coord2y.getText()) - Integer.parseInt(Coord1y.getText()))^2);
+                System.out.println((Integer.parseInt(Coord2z.getText()) - Integer.parseInt(Coord1z.getText()))^2);
+                System.out.println();
+
+                System.out.println(
+                    ((Integer.parseInt(Coord2x.getText()) - Integer.parseInt(Coord1x.getText())) ^ 2) + 
+                    ((Integer.parseInt(Coord2y.getText()) - Integer.parseInt(Coord1y.getText())) ^ 2) + 
+                    ((Integer.parseInt(Coord2z.getText()) - Integer.parseInt(Coord1z.getText())) ^ 2)
+                    );
+
+                Double distance2 = Math.sqrt(
+                    (() ^ 2) + 
+                    ((Integer.parseInt(Coord2y.getText()) - Integer.parseIntInteger.parseInt(Coord2x.getText()) - Integer.parseInt(Coord1x.getText())(Coord1y.getText())) ^ 2) + 
+                    ((Integer.parseInt(Coord2z.getText()) - Integer.parseInt(Coord1z.getText())) ^ 2)
+                    );
+
+                System.out.println(distance2);
+                Double d = distance2;
+                System.out.println(d);
+                String result = d.toString();
                 DistanceLabel.setText(result);
             }
         });
